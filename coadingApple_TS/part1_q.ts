@@ -72,7 +72,7 @@ function 결혼가능여부(
   매력점수: string
 ): string | void {
   let total = 월소득 + (집보유여부 ? 500 : 0) + (매력점수 === "상" ? 100 : 0);
-  return total > 600 && "결혼가능";
+  if (total > 600) return "결혼가능";
 }
 
 // 숫자와 문자가 섞인 array를 입력하면 [1,2,3] 이렇게 숫자로 깔끔하게 변환되어 나오는 클리닝함수를 만들어오고 타입지정까지 확실히 해보십시오.
@@ -84,4 +84,37 @@ function 클리닝함수(x: (number | string)[]): number[] {
 //  object 자료를 파라미터로 집어넣으면 그 선생님이 가르치고 있는 과목중 맨 뒤의 1개를 return 해주는 함수를 만들어봅시다.
 function 과목추출(x: { subject: string | string[] }) {
   return typeof x.subject === "string" ? x.subject : x.subject[-1];
+}
+
+// (숙제1) object 타입을 정의한 type alias 두개를 & 기호로 합칠 때 중복된 속성이 있으면 어떻게 될까요?
+type Same1 = number;
+type Same2 = number;
+type Same = Same1 & Same2;
+// 단순히 하나의 타입이 된다
+
+// (숙제2) 다음 조건을 만족하는 타입을 만들어봅시다.
+type Shape = {
+  color?: string;
+  size: number;
+  readonly position: number[];
+};
+
+// (숙제3) 다음을 만족하는 type alias를 연습삼아 간단히 만들어보십시오.
+// object 안에 있는 이름, 전화번호, 이메일 속성이 옳은 타입인지 검사하는 type alias
+type Reporter = {
+  name: string;
+  phone: number;
+  email: string;
+};
+
+// (숙제2) 다음 함수2개를 만들어보고 타입까지 정의해보십시오.
+const cutZero = (a: string): string => a.replace(/^0+/, "");
+
+const removeDash = (a: string): number => parseInt(a.replace(/-/g, "")); // g: global -> 모든 매칭 결과 찾음
+
+// (숙제3) 함수에 함수를 집어넣고 싶습니다.
+type Type1 = (a: string) => string;
+type Type2 = (a: string) => number;
+function 첫쩨(a: string, b: Type1, c: Type2) {
+  return c(b(a));
 }

@@ -1,6 +1,8 @@
+// 컴파일 옵션
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs"
+    "target": "es5", // ts => js 변환 시 어떤 버전 사용할지
+    "module": "commonjs", // 파일 간 import 문법 구현 시 사용할 문법
+    "strictNullChecks": true // null이 들어올 경우 체크해주는 옵션
   }
 }

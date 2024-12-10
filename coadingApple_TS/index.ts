@@ -14,7 +14,7 @@ type Member = [number, boolean]; // tuple로 설정 가능
 let john: Member = [123, true];
 
 // 함수에도 타입 지정 가능
-function 함수(x: number): number {
+function 함수_숫자(x: number): number {
   return x * 2;
 } // 파라미터 값: () 내부 | 출력 값: () 밖
 
@@ -64,7 +64,7 @@ const intro_Me: Record<any, any> = {
 };
 
 // 2. 타입스크립트 기본 타입 정리(복?습)
-let 성: string = "kim"; // 성 = 123; => 에러 발생 - 설정한 타입만 담을 수 있게 실드
+let 김: string = "kim"; // 김 = 123; => 에러 발생 - 설정한 타입만 담을 수 있게 실드
 let 나이: number = 18;
 let 모쏠: boolean = true;
 
@@ -75,7 +75,7 @@ let 회원명 = "하이요"; // 이렇게 지정 안해도 알아서 지정해�
 // 3. 타입 지정하기 애매할 때: union, any, unkown
 // 1) union
 let 여러가지: string | number = 1;
-let 어레지: (string | number)[] = ["hi", 1]; // 괄호 안치면 의미 바뀜
+let 어레dl: (string | number)[] = ["hi", 1]; // 괄호 안치면 의미 바뀜
 let 오브젝트: { [key: string]: string | number } = {
   a: 1,
   b: "2",
@@ -125,3 +125,44 @@ function 양다리함수(x: number | string) {
 function 문어함수(x: number | string) {
   return (x as number) + 1;
 }
+
+// 6. 변수 문법
+type Animal = string | number | undefined; // union 타입
+// => type을 변수처럼 분리해서 사용 가능: type alias(별칭)
+// 시작은 대문자로
+let animal: Animal; // string | number | undefined 타입 사용 가능
+// object 타입과 결합
+type AnimalIntro = {
+  name: string;
+  age: number;
+};
+let 돼지: AnimalIntro = {
+  name: "cat",
+  age: 15,
+};
+// const 변수는 변경 불가능
+const 출생지역 = "서울";
+const 내소개 = {
+  region: "seoul",
+};
+내소개.region = "경기"; // const 내 object는 변경 가능
+// => TS를 통해 방지 가능
+type Girlfriend = {
+  readonly name: string;
+}; // readonly: 읽기 전용 => 수정 시 에러(js파일에선 정상 작동하니 주의)
+const 여친: Girlfriend = {
+  name: "유라",
+};
+
+// 타입 키워드 합치기
+type Name = string;
+type Age = number;
+type Person = Name | Age; // type Person = string | number
+// 2) object extend
+type PositionX = {
+  x: number;
+};
+type PositionY = {
+  y: number;
+};
+type Position = PositionX & PositionY; // { x: number, y: number }
