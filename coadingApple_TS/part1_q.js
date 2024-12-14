@@ -63,3 +63,30 @@ var removeDash = function (a) { return parseInt(a.replace(/-/g, "")); }; // g: g
 function 첫쩨(a, b, c) {
     return c(b(a));
 }
+// (숙제1) Car 클래스를 만들고 싶습니다.
+var Car = /** @class */ (function () {
+    function Car(model, price) {
+        this.model = model;
+        this.price = price;
+    }
+    Car.prototype.tax = function () {
+        return this.price / 10;
+    };
+    return Car;
+}());
+// (숙제2) class인데 파라미터가 잔뜩 들어가는 class Word를 만들어봅시다.
+var Word = /** @class */ (function () {
+    function Word() {
+    }
+    return Word;
+}());
+var 장바구니 = [
+    {
+        product: "청소기",
+        price: 7000,
+    },
+];
+var calculate = {
+    plus: function (a, b) { return a + b; },
+    minus: function (a, b) { return a - b; },
+};

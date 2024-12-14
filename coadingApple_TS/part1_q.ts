@@ -118,3 +118,56 @@ type Type2 = (a: string) => number;
 function 첫쩨(a: string, b: Type1, c: Type2) {
   return c(b(a));
 }
+
+// (숙제1) Car 클래스를 만들고 싶습니다.
+class Car {
+  model: string;
+  price: number;
+  constructor(model: string, price: number) {
+    this.model = model;
+    this.price = price;
+  }
+  tax(): number {
+    return this.price / 10;
+  }
+}
+
+// (숙제2) class인데 파라미터가 잔뜩 들어가는 class Word를 만들어봅시다.
+class Word {
+  num: number[];
+  str: string[];
+}
+
+// (숙제1) interface 이용해서 간단하게 타입을 만들어봅시다
+interface Products {
+  brand: string;
+  serialNumber: number;
+  model: String[];
+}
+
+// (숙제2) array 안에 object 여러개가 필요합니다.
+interface ShoppigList {
+  product: string;
+  price: number;
+}
+
+interface Card extends ShoppigList {
+  card: boolean;
+}
+
+let 장바구니: ShoppigList[] = [
+  {
+    product: "청소기",
+    price: 7000,
+  },
+];
+
+// (숙제4) object 안에 함수를 2개 넣고 싶은데요
+interface Calculate {
+  plus: (a: number, b: number) => number;
+  minus: (a: number, b: number) => number;
+}
+let calculate: Calculate = {
+  plus: (a, b) => a + b,
+  minus: (a, b) => a - b,
+};
