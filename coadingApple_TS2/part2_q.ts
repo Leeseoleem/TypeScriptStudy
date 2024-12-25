@@ -32,3 +32,41 @@ function 어레이받아함수([a, b, c]: [a: number, b: string, c: boolean]): v
   console.log(a, b, c);
 }
 어레이받아함수([40, "와인", false]);
+
+// 숙제1) 다음 x, y, z 속성의 특징을 설명해보십시오.
+class User1 {
+  private static x = 10; // User1에 속하며(자식 물려주기 X) User1 class에서만 수정 가능한 변수
+  public static y = 20; // User1에 속하며 자유롭게 수정 가능한 변수
+  protected z = 30;
+}
+
+let 한숨 = new User1();
+// User1.x = 20; 은 불가능
+// User1.y = 10; 은 가능
+
+// (숙제2) x 속성에 숫자를 더해주는 함수가 필요합니다.
+
+class UserPlus {
+  private static x = 10;
+  public static y = 20;
+  static addOne(a: number): number {
+    return UserPlus.x + a;
+  }
+  static printX() {
+    console.log(UserPlus.x);
+  }
+}
+UserPlus.addOne(3); //이렇게 하면 x가 3 더해져야함
+UserPlus.addOne(4); //이렇게 하면 x가 4 더해져야함
+UserPlus.printX(); //이렇게 하면 콘솔창에 x값이 출력되어야함
+
+class Square {
+  x: number;
+  y: number;
+  color: string;
+  constructor(x: number, y: number, color: string) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+  }
+}
